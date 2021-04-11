@@ -12,6 +12,7 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
     -fan control
     -parsing of svg and stl files
     -multiple milling strategies (e.g. contour, constant z, parallel)
+    -manual controls of all motors
  
  ## Requirements and dependencies
     The code was tested on raspberry pi 3 and 4
