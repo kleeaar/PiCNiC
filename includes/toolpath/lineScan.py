@@ -2,7 +2,7 @@ import numpy as np
 import sys
 import concurrent.futures
 from scipy import interpolate
-import includes.misc.utils
+import includes.misc.utils as utils
 
 #maybe use something better like trimesh?
 

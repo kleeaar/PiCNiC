@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from shapely.geometry import LineString
 from shapely.geometry import Polygon
 from includes.thirdParty.polyObjects import PolygonPath, PolygonPatch
-import includes.toolpath.constantZContour
+import includes.toolpath.constantZContour as constantZContour
 
 class svgToContours():
     def __init__(self, file):

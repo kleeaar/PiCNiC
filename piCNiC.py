@@ -10,7 +10,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from mpl_toolkits.mplot3d import Axes3D
 
 from stl import mesh
-from svgpathtools import svg2paths, disvg,svg2paths2
 
 import numpy as np
 import time
@@ -20,14 +19,14 @@ from time import sleep
 from includes.misc.ui import Ui_MainWindow
 import includes.misc.utils as util
 
-import includes.toolpath.lineScan
-import includes.toolpath.stlToContours
-import includes.toolpath.svgToContours
+import includes.toolpath.lineScan as lineScan
+import includes.toolpath.stlToContours as stlToContours
+import includes.toolpath.svgToContours as svgToContours
 from includes.communication.raspberryCommunication import raspberryCommunication
 from includes.communication.threadedTasks import threadedTasks
 
 
-import includes.misc.constants
+import includes.misc.constants as constants
 #pip install git+https://github.com/pyqtgraph/pyqtgraph required to fix retina display bug
 
 sys.setrecursionlimit(1000000)
