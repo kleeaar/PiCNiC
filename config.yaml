@@ -1,0 +1,51 @@
+pinNumbers:
+  direction: # pin numbers controlling the directions of the motors
+      x: 21
+      y1: 15
+      y2: 8
+      z: 5
+  step: # pin numbers sending the motot steps
+    x: 20
+    y1: 14
+    y2: 25
+    z: 6
+  microStepping: # pin numbers controling the microstepping of the motors
+    x:
+      isMCP: False
+      0: 18
+      1: 23
+      2: 24
+    y:
+      isMCP: True
+      0: 8
+      1: 9
+      2: 10
+    z:
+      isMCP: True
+      0: 11
+      1: 12
+      2: 13
+  endswitches: # pins reading the endswitches
+    x:
+      front: 9
+      rear: 10
+    y1:
+      front: 26
+      rear: 19
+    y2:
+      front: 13
+      rear: 11
+    z:
+      front: 22
+      rear: 27
+  millingMotorRelay: 7 # pin number controling the milling motor relay
+  fan: 12 # pin number controling the fan
+microStepping: # possible vaalue are 1,2,4,8,16,32
+  x: 8
+  y: 8
+  z: 4
+axisDirections: # axis directions
+  x: -1
+  y1: -1
+  y2: -1
+  z: -1
