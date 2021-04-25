@@ -961,6 +961,12 @@ class Ui_MainWindow(object):
         self.millingMotorLable.setStyleSheet("")
         self.millingMotorLable.setObjectName("millingMotorLable")
         self.tabWidget.addTab(self.tab_3, "")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(850, 570, 130, 63))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("GUI/PiCNiC.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 24))
@@ -971,7 +977,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.tabWidget_2.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
