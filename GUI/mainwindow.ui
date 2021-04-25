@@ -63,7 +63,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -439,7 +439,7 @@
        <widget class="QComboBox" name="svgProcessingStrategy">
         <property name="geometry">
          <rect>
-          <x>5</x>
+          <x>10</x>
           <y>177</y>
           <width>111</width>
           <height>31</height>
@@ -885,7 +885,7 @@
        <widget class="QComboBox" name="processingStrategy">
         <property name="geometry">
          <rect>
-          <x>5</x>
+          <x>10</x>
           <y>177</y>
           <width>111</width>
           <height>31</height>
