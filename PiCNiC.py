@@ -1,14 +1,14 @@
 """Copyright (c) 2021 L. Schimpf
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib import cm
@@ -459,6 +459,10 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.canvas = FigureCanvas(self.fig)
         self.canvas.setParent(self)
         self.ax = self.fig.add_subplot(111, projection='3d')
+        self.fig.subplots_adjust(left=0, right=1, top=1, bottom=0, wspace=0, hspace=0)
+        self.ax.set_xlabel('x')
+        self.ax.set_ylabel('y')
+        self.ax.set_zlabel('z')
         self.plot3d.addWidget(self.canvas)
 
 
@@ -466,6 +470,10 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.canvas2 = FigureCanvas(self.fig2)
         self.canvas2.setParent(self)
         self.ax2 = self.fig2.add_subplot(111, projection='3d')
+        self.fig2.subplots_adjust(left=0, right=1, top=1, bottom=0, wspace=0, hspace=0)
+        self.ax2.set_xlabel('x')
+        self.ax2.set_ylabel('y')
+        self.ax2.set_zlabel('z')
         self.toolMesh,=self.ax2.plot([], [], [],'k-', zorder=150)
         self.plot3dProgramCode.addWidget(self.canvas2)
         self.canvas2.draw()
@@ -612,6 +620,9 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         graph.add_collection3d(mesh)
         scale = self.myCncObject.stlScaling*self.myCncObject.facets.flatten("A")
         graph.auto_scale_xyz(scale, scale, scale)
+        graph.set_xlabel('x')
+        graph.set_ylabel('y')
+        graph.set_zlabel('z')
         self.programCode,=graph.plot([],[],[],'r-', zorder=100)
         canvas.draw()
 
@@ -648,6 +659,9 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for contour in self.myCncObject.importedContourForPlotting:
             self.rescaledContour.append(scaling*np.array(contour))
             graph.plot(scaling*np.array(contour)[:,0],scaling*np.array(contour)[:,1],scaling*np.array(contour)[:,2],'b-')
+        graph.set_xlabel('x')
+        graph.set_ylabel('y')
+        graph.set_zlabel('z')
         self.programCode,=graph.plot([],[],[],'r-', zorder=100)
 
         canvas.draw()
