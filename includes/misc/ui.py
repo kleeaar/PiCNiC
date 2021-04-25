@@ -167,7 +167,7 @@ class Ui_MainWindow(object):
         self.svgProcessingStrategy = QtWidgets.QComboBox(self.tab)
         self.svgProcessingStrategy.setGeometry(QtCore.QRect(10, 177, 111, 31))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(14)
         self.svgProcessingStrategy.setFont(font)
         self.svgProcessingStrategy.setObjectName("svgProcessingStrategy")
         self.svgProcessingStrategy.addItem("")
@@ -319,7 +319,7 @@ class Ui_MainWindow(object):
         self.processingStrategy = QtWidgets.QComboBox(self.tab_4)
         self.processingStrategy.setGeometry(QtCore.QRect(10, 177, 111, 31))
         font = QtGui.QFont()
-        font.setPointSize(18)
+        font.setPointSize(14)
         self.processingStrategy.setFont(font)
         self.processingStrategy.setObjectName("processingStrategy")
         self.processingStrategy.addItem("")
@@ -971,7 +971,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
