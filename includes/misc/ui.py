@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         self.svgFilePathLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.svgFilePathLabel.setObjectName("svgFilePathLabel")
         self.svgImportButton = QtWidgets.QPushButton(self.tab)
-        self.svgImportButton.setGeometry(QtCore.QRect(0, 10, 113, 41))
+        self.svgImportButton.setGeometry(QtCore.QRect(10, 10, 113, 41))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("GUI/icons/navigation/png/upload.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.svgImportButton.setIcon(icon)
@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
         self.stlExportButton.setIcon(icon1)
         self.stlExportButton.setObjectName("stlExportButton")
         self.stlImportButton = QtWidgets.QPushButton(self.tab_4)
-        self.stlImportButton.setGeometry(QtCore.QRect(0, 10, 113, 41))
+        self.stlImportButton.setGeometry(QtCore.QRect(10, 10, 113, 41))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.stlImportButton.setFont(font)
@@ -971,8 +971,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
-        self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
