@@ -29,7 +29,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -1090,7 +1090,7 @@ contour</string>
         <rect>
          <x>182</x>
          <y>70</y>
-         <width>91</width>
+         <width>85</width>
          <height>41</height>
         </rect>
        </property>
@@ -1119,7 +1119,7 @@ contour</string>
         <rect>
          <x>7</x>
          <y>70</y>
-         <width>91</width>
+         <width>85</width>
          <height>41</height>
         </rect>
        </property>
@@ -1392,7 +1392,7 @@ contour</string>
         <rect>
          <x>94</x>
          <y>70</y>
-         <width>91</width>
+         <width>85</width>
          <height>41</height>
         </rect>
        </property>
