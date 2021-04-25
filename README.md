@@ -28,7 +28,7 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  ## Usage
  ### SVG import
  #### Contour
- <img width="1028" alt="grafik" src="https://user-images.githubusercontent.com/19652477/115993207-193bd980-a5d2-11eb-9209-080add074c23.png">
+ <img width="1028" alt="grafik" src="https://user-images.githubusercontent.com/19652477/115993417-f65df500-a5d2-11eb-871e-8e5a37e02bc1.png">
  #### Constant Z
  ### STL import
  #### Scan
