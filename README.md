@@ -29,10 +29,14 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  ### SVG import
  #### Contour
  <img width="1028" alt="grafik" src="https://user-images.githubusercontent.com/19652477/115993417-f65df500-a5d2-11eb-871e-8e5a37e02bc1.png">
+ 
  #### Constant Z
+ 
  ### STL import
+ 
  #### Scan
  #### Contour
+ 
  ## Credits
   The icons included in this repository designed by freepik from Flaticon
   PiCNiC uses third party libraries for the communication with the MCP23017 provided by 
