@@ -29,7 +29,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -63,7 +63,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1097,7 +1097,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>13</pointsize>
+         <pointsize>12</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -1126,7 +1126,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>13</pointsize>
+         <pointsize>12</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -1186,7 +1186,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1208,7 +1208,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1230,7 +1230,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1252,7 +1252,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1277,7 +1277,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1302,7 +1302,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1377,7 +1377,7 @@ contour</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1399,7 +1399,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>13</pointsize>
+         <pointsize>12</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -2032,7 +2032,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2053,7 +2053,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2074,7 +2074,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2095,7 +2095,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2116,7 +2116,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2137,7 +2137,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2161,7 +2161,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2185,7 +2185,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2571,7 +2571,7 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
