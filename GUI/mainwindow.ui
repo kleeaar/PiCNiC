@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1000</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>781</width>
-      <height>541</height>
+      <width>981</width>
+      <height>631</height>
      </rect>
     </property>
     <property name="font">
@@ -29,7 +29,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -41,7 +41,7 @@
         <x>280</x>
         <y>0</y>
         <width>20</width>
-        <height>491</height>
+        <height>601</height>
        </rect>
       </property>
       <property name="orientation">
@@ -54,8 +54,13 @@
         <x>0</x>
         <y>0</y>
         <width>281</width>
-        <height>511</height>
+        <height>601</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -90,7 +95,7 @@
          <rect>
           <x>0</x>
           <y>10</y>
-          <width>111</width>
+          <width>113</width>
           <height>41</height>
          </rect>
         </property>
@@ -106,7 +111,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>440</y>
+          <y>500</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -123,7 +128,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>380</y>
+          <y>420</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -139,8 +144,8 @@
        <widget class="QLabel" name="xPosLabel_3">
         <property name="geometry">
          <rect>
-          <x>134</x>
-          <y>198</y>
+          <x>142</x>
+          <y>216</y>
           <width>161</width>
           <height>21</height>
          </rect>
@@ -160,8 +165,8 @@
        <widget class="QLabel" name="xPosLabel_5">
         <property name="geometry">
          <rect>
-          <x>2</x>
-          <y>258</y>
+          <x>12</x>
+          <y>275</y>
           <width>161</width>
           <height>21</height>
          </rect>
@@ -181,8 +186,8 @@
        <widget class="QDoubleSpinBox" name="depth">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>279</y>
+          <x>10</x>
+          <y>296</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -211,8 +216,8 @@
        <widget class="QDoubleSpinBox" name="numberOfLayers">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>280</y>
+          <x>140</x>
+          <y>296</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -241,8 +246,8 @@
        <widget class="QDoubleSpinBox" name="safetyDistance">
         <property name="geometry">
          <rect>
-          <x>132</x>
-          <y>219</y>
+          <x>140</x>
+          <y>237</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -274,8 +279,8 @@
        <widget class="QLabel" name="xPosLabel_2">
         <property name="geometry">
          <rect>
-          <x>2</x>
-          <y>199</y>
+          <x>12</x>
+          <y>216</y>
           <width>141</width>
           <height>21</height>
          </rect>
@@ -295,8 +300,8 @@
        <widget class="QLabel" name="xPosLabel_4">
         <property name="geometry">
          <rect>
-          <x>132</x>
-          <y>259</y>
+          <x>142</x>
+          <y>275</y>
           <width>161</width>
           <height>21</height>
          </rect>
@@ -316,8 +321,8 @@
        <widget class="QDoubleSpinBox" name="toolDiameter">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>220</y>
+          <x>10</x>
+          <y>237</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -350,7 +355,7 @@
         <property name="geometry">
          <rect>
           <x>12</x>
-          <y>59</y>
+          <y>69</y>
           <width>141</width>
           <height>21</height>
          </rect>
@@ -371,18 +376,14 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>80</y>
+          <y>90</y>
           <width>101</width>
           <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
           <pointsize>16</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -408,7 +409,7 @@
         <property name="geometry">
          <rect>
           <x>7</x>
-          <y>120</y>
+          <y>130</y>
           <width>241</width>
           <height>20</height>
          </rect>
@@ -421,7 +422,7 @@
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>420</y>
+          <y>460</y>
           <width>171</width>
           <height>16</height>
          </rect>
@@ -438,9 +439,9 @@
        <widget class="QComboBox" name="svgProcessingStrategy">
         <property name="geometry">
          <rect>
-          <x>6</x>
-          <y>160</y>
-          <width>106</width>
+          <x>5</x>
+          <y>177</y>
+          <width>111</width>
           <height>31</height>
          </rect>
         </property>
@@ -463,8 +464,8 @@
        <widget class="QLabel" name="xPosLabel_15">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>133</y>
+          <x>12</x>
+          <y>150</y>
           <width>141</width>
           <height>31</height>
          </rect>
@@ -484,8 +485,8 @@
        <widget class="QDoubleSpinBox" name="offsetX">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>340</y>
+          <x>10</x>
+          <y>357</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -514,8 +515,8 @@
        <widget class="QDoubleSpinBox" name="offsetY">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>340</y>
+          <x>140</x>
+          <y>357</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -547,8 +548,8 @@
        <widget class="QLabel" name="xOffsetLabel">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>320</y>
+          <x>12</x>
+          <y>337</y>
           <width>161</width>
           <height>21</height>
          </rect>
@@ -568,8 +569,8 @@
        <widget class="QLabel" name="yOffsetLabel">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>320</y>
+          <x>142</x>
+          <y>337</y>
           <width>161</width>
           <height>21</height>
          </rect>
@@ -600,6 +601,11 @@
           <height>31</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>no file selected</string>
         </property>
@@ -611,7 +617,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>440</y>
+          <y>500</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -635,7 +641,7 @@
         </property>
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <pointsize>13</pointsize>
          </font>
         </property>
         <property name="text">
@@ -650,14 +656,14 @@
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>220</y>
+          <y>237</y>
           <width>101</width>
           <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>18</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -682,8 +688,8 @@
        <widget class="QLabel" name="xPosLabel_6">
         <property name="geometry">
          <rect>
-          <x>2</x>
-          <y>198</y>
+          <x>12</x>
+          <y>216</y>
           <width>141</width>
           <height>21</height>
          </rect>
@@ -703,15 +709,15 @@
        <widget class="QDoubleSpinBox" name="toolDiameterStl">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>219</y>
+          <x>10</x>
+          <y>237</y>
           <width>101</width>
           <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>18</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -737,14 +743,14 @@
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>280</y>
+          <y>296</y>
           <width>101</width>
           <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>18</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -767,7 +773,7 @@
         <property name="geometry">
          <rect>
           <x>142</x>
-          <y>199</y>
+          <y>216</y>
           <width>121</width>
           <height>21</height>
          </rect>
@@ -788,7 +794,7 @@
         <property name="geometry">
          <rect>
           <x>142</x>
-          <y>259</y>
+          <y>275</y>
           <width>111</width>
           <height>21</height>
          </rect>
@@ -809,7 +815,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>380</y>
+          <y>420</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -825,15 +831,15 @@
        <widget class="QDoubleSpinBox" name="sliceDistance">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>279</y>
+          <x>10</x>
+          <y>296</y>
           <width>101</width>
           <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>18</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -858,8 +864,8 @@
        <widget class="QLabel" name="xPosLabel_9">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>259</y>
+          <x>12</x>
+          <y>275</y>
           <width>161</width>
           <height>21</height>
          </rect>
@@ -879,9 +885,9 @@
        <widget class="QComboBox" name="processingStrategy">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>159</y>
-          <width>106</width>
+          <x>5</x>
+          <y>177</y>
+          <width>111</width>
           <height>31</height>
          </rect>
         </property>
@@ -909,8 +915,8 @@
        <widget class="QLabel" name="xPosLabel_10">
         <property name="geometry">
          <rect>
-          <x>4</x>
-          <y>133</y>
+          <x>12</x>
+          <y>150</y>
           <width>141</width>
           <height>31</height>
          </rect>
@@ -930,8 +936,8 @@
        <widget class="QLabel" name="xPosLabel_12">
         <property name="geometry">
          <rect>
-          <x>15</x>
-          <y>59</y>
+          <x>12</x>
+          <y>69</y>
           <width>141</width>
           <height>21</height>
          </rect>
@@ -951,8 +957,8 @@
        <widget class="QDoubleSpinBox" name="scaleStl">
         <property name="geometry">
          <rect>
-          <x>13</x>
-          <y>80</y>
+          <x>10</x>
+          <y>90</y>
           <width>101</width>
           <height>31</height>
          </rect>
@@ -985,7 +991,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>120</y>
+          <y>131</y>
           <width>241</width>
           <height>20</height>
          </rect>
@@ -998,7 +1004,7 @@
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>420</y>
+          <y>460</y>
           <width>171</width>
           <height>16</height>
          </rect>
@@ -1016,7 +1022,7 @@
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>149</y>
+          <y>170</y>
           <width>121</width>
           <height>41</height>
          </rect>
@@ -1038,8 +1044,8 @@ contour</string>
        <rect>
         <x>290</x>
         <y>10</y>
-        <width>481</width>
-        <height>481</height>
+        <width>681</width>
+        <height>591</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="plot3d"/>
@@ -1053,9 +1059,9 @@ contour</string>
       <property name="geometry">
        <rect>
         <x>280</x>
-        <y>10</y>
+        <y>0</y>
         <width>20</width>
-        <height>491</height>
+        <height>601</height>
        </rect>
       </property>
       <property name="orientation">
@@ -1066,7 +1072,7 @@ contour</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>90</y>
+        <y>130</y>
         <width>281</width>
         <height>281</height>
        </rect>
@@ -1091,7 +1097,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>12</pointsize>
+         <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -1120,7 +1126,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>12</pointsize>
+         <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -1312,8 +1318,8 @@ contour</string>
       <widget class="QLabel" name="progressValue">
        <property name="geometry">
         <rect>
-         <x>225</x>
-         <y>230</y>
+         <x>230</x>
+         <y>237</y>
          <width>51</width>
          <height>16</height>
         </rect>
@@ -1324,7 +1330,7 @@ contour</string>
         </font>
        </property>
        <property name="text">
-        <string>100.9%</string>
+        <string>100.0%</string>
        </property>
       </widget>
       <widget class="QDoubleSpinBox" name="speed">
@@ -1363,7 +1369,7 @@ contour</string>
       <widget class="QLabel" name="xPosLabel_13">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>15</x>
          <y>30</y>
          <width>141</width>
          <height>31</height>
@@ -1371,7 +1377,7 @@ contour</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>16</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1393,7 +1399,7 @@ contour</string>
        <property name="font">
         <font>
          <family>.AppleSystemUIFont</family>
-         <pointsize>12</pointsize>
+         <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -1415,7 +1421,7 @@ contour</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>20</y>
         <width>281</width>
         <height>81</height>
        </rect>
@@ -1439,7 +1445,7 @@ contour</string>
        </property>
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>13</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -1474,7 +1480,7 @@ contour</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>380</y>
+        <y>480</y>
         <width>281</width>
         <height>121</height>
        </rect>
@@ -1723,8 +1729,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
        <rect>
         <x>290</x>
         <y>10</y>
-        <width>481</width>
-        <height>481</height>
+        <width>681</width>
+        <height>591</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="plot3dProgramCode"/>
@@ -1740,8 +1746,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggPosXSlow">
       <property name="geometry">
        <rect>
-        <x>559</x>
-        <y>220</y>
+        <x>667</x>
+        <y>280</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1763,8 +1769,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggPosYSlow">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>169</y>
+        <x>618</x>
+        <y>229</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1786,8 +1792,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggNegXSlow">
       <property name="geometry">
        <rect>
-        <x>462</x>
-        <y>220</y>
+        <x>570</x>
+        <y>280</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1809,8 +1815,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggNegYSlow">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>272</y>
+        <x>618</x>
+        <y>332</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1832,8 +1838,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggPosYFast">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>113</y>
+        <x>618</x>
+        <y>173</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1855,8 +1861,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggPosXFast">
       <property name="geometry">
        <rect>
-        <x>610</x>
-        <y>220</y>
+        <x>718</x>
+        <y>280</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1878,8 +1884,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggNegYFast">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>327</y>
+        <x>618</x>
+        <y>387</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1901,8 +1907,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggNegXFast">
       <property name="geometry">
        <rect>
-        <x>411</x>
-        <y>220</y>
+        <x>519</x>
+        <y>280</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -1925,9 +1931,9 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       <property name="geometry">
        <rect>
         <x>360</x>
-        <y>20</y>
+        <y>0</y>
         <width>20</width>
-        <height>471</height>
+        <height>601</height>
        </rect>
       </property>
       <property name="orientation">
@@ -1937,8 +1943,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QDoubleSpinBox" name="xSetPoint">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>70</y>
+        <x>70</x>
+        <y>80</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -1964,8 +1970,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QDoubleSpinBox" name="ySetPoint">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>120</y>
+        <x>70</x>
+        <y>130</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -1991,8 +1997,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QDoubleSpinBox" name="zSetPoint">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>170</y>
+        <x>70</x>
+        <y>180</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -2018,8 +2024,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="xPosLabelMove">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>80</y>
+        <x>40</x>
+        <y>90</y>
         <width>21</width>
         <height>16</height>
        </rect>
@@ -2039,8 +2045,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="yPosLabelMove">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>130</y>
+        <x>40</x>
+        <y>140</y>
         <width>21</width>
         <height>16</height>
        </rect>
@@ -2060,8 +2066,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="zPosLabelMove">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>180</y>
+        <x>40</x>
+        <y>190</y>
         <width>21</width>
         <height>16</height>
        </rect>
@@ -2081,8 +2087,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>30</y>
+        <x>70</x>
+        <y>40</y>
         <width>111</width>
         <height>31</height>
        </rect>
@@ -2102,8 +2108,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>30</y>
+        <x>190</x>
+        <y>40</y>
         <width>171</width>
         <height>31</height>
        </rect>
@@ -2123,8 +2129,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="currentXpos">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>76</y>
+        <x>170</x>
+        <y>86</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -2147,8 +2153,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="currentYpos">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>125</y>
+        <x>170</x>
+        <y>135</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -2171,8 +2177,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="currentZpos">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>170</y>
+        <x>170</x>
+        <y>180</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -2195,8 +2201,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="goToPosition">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>270</y>
+        <x>60</x>
+        <y>280</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -2230,8 +2236,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="goHome">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>360</y>
+        <x>20</x>
+        <y>430</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2261,8 +2267,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="setHome">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>410</y>
+        <x>20</x>
+        <y>480</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2292,8 +2298,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="stopManualDrive">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>270</y>
+        <x>200</x>
+        <y>280</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -2327,9 +2333,9 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="Line" name="line_4">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>320</y>
-        <width>311</width>
+        <x>10</x>
+        <y>370</y>
+        <width>331</width>
         <height>20</height>
        </rect>
       </property>
@@ -2340,8 +2346,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggPosZFast">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>130</y>
+        <x>798</x>
+        <y>190</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -2363,8 +2369,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggPosZSlow">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>185</y>
+        <x>798</x>
+        <y>245</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -2386,8 +2392,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggNegZSlow">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>255</y>
+        <x>798</x>
+        <y>315</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -2409,8 +2415,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="joggNegZFast">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>310</y>
+        <x>798</x>
+        <y>370</y>
         <width>50</width>
         <height>50</height>
        </rect>
@@ -2432,8 +2438,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="setZero">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>460</y>
+        <x>20</x>
+        <y>530</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2463,8 +2469,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>235</y>
+        <x>498</x>
+        <y>295</y>
         <width>21</width>
         <height>31</height>
        </rect>
@@ -2484,8 +2490,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>533</x>
-        <y>80</y>
+        <x>641</x>
+        <y>140</y>
         <width>21</width>
         <height>31</height>
        </rect>
@@ -2505,8 +2511,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
-        <x>712</x>
-        <y>100</y>
+        <x>820</x>
+        <y>160</y>
         <width>21</width>
         <height>31</height>
        </rect>
@@ -2526,8 +2532,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QPushButton" name="performReferenceScan">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>360</y>
+        <x>190</x>
+        <y>430</y>
         <width>141</width>
         <height>41</height>
        </rect>
@@ -2557,15 +2563,15 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="xPosLabel_14">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>220</y>
+        <x>70</x>
+        <y>230</y>
         <width>141</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -2578,8 +2584,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QDoubleSpinBox" name="speedManualDrive">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>220</y>
+        <x>210</x>
+        <y>230</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -2611,8 +2617,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="label_17">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>430</y>
+        <x>200</x>
+        <y>500</y>
         <width>171</width>
         <height>31</height>
        </rect>
@@ -2635,8 +2641,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>467</y>
+        <x>200</x>
+        <y>537</y>
         <width>51</width>
         <height>22</height>
        </rect>
@@ -2663,8 +2669,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
      <widget class="QLabel" name="millingMotorLable">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>460</y>
+        <x>260</x>
+        <y>530</y>
         <width>71</width>
         <height>31</height>
        </rect>
@@ -2689,8 +2695,8 @@ border-radius: 10px;border: 2px solid rgb(183, 186, 186);}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>22</height>
+     <width>1000</width>
+     <height>24</height>
     </rect>
    </property>
   </widget>
