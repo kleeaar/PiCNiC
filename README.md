@@ -25,7 +25,14 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
         - numpy-stl
         - shapely
         - pyyaml
- 
+ ## Usage
+ ### SVG import
+ #### Contour
+ <img width="1028" alt="grafik" src="https://user-images.githubusercontent.com/19652477/115993207-193bd980-a5d2-11eb-9209-080add074c23.png">
+ #### Constant Z
+ ### STL import
+ #### Scan
+ #### Contour
  ## Credits
   The icons included in this repository designed by freepik from Flaticon
   PiCNiC uses third party libraries for the communication with the MCP23017 provided by 
