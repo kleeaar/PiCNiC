@@ -25,6 +25,7 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
         - numpy-stl
         - shapely
         - pyyaml
+      In order to install the dependencies, you can run the setup.sh files.
  ## Usage
  ### SVG import
  PiCNiC has a built in SVG module interpreter, which allows SVG files to be parsed in two 2D strategies, namely Contour and Constant Z.
