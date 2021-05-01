@@ -28,11 +28,11 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  
  In order to install the dependencies, you can run the setup.sh files.
  ## Usage
- First, start the pigpio daemon by executing the command in you terminal
+ First, start the pigpio daemon by executing the command
  ```bat
  sudo pigpiod
  ```
- then run the python file PiCNiC.py by executing
+ in your console, then run the python file PiCNiC.py by executing
  ```bat
  python3 PiCNiC.py
  ```
