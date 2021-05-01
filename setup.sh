@@ -30,6 +30,6 @@ pip3 install svg.path;
 pip3 install Rtree
 
 #new config using conda:
-conda install -c cbetters pigpio
-conda install -c conda-forge numpy-stl
-conda install -c conda-forge pyyaml
+#conda install -c cbetters pigpio
+#conda install -c conda-forge numpy-stl
+#conda install -c conda-forge pyyaml
