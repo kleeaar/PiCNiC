@@ -52,7 +52,7 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  #### Contour
  
  ## Credits
-  * The icons included in this repository designed by freepik from Flaticon
+  * The icons included in this repository are designed by freepik from Flaticon
   * PiCNiC uses third party libraries for the communication with the MCP23017 provided by 
   https://bitbucket.org/dewoodruff/mcp23017-python-3-library-with-interrupts/src/master/
   
