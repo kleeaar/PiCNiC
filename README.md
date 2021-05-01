@@ -15,7 +15,6 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
 * manual controls of all axes
  
  ## Requirements and dependencies
- The code was tested on raspberry pi 3 and 4
  PiCNiC requires the following modules to be installed on your raspberry pi:
  * pigpio
  * PyQt5
@@ -27,6 +26,8 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  * pyyaml
  
  In order to install the dependencies, you can run the setup.sh files.
+ 
+ PiCNiC was tested on raspberry pi 3 and 4.
  ## Usage
  First, start the pigpio daemon by executing the command
  ```bat
