@@ -17,15 +17,15 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  ## Requirements and dependencies
  The code was tested on raspberry pi 3 and 4
  PiCNiC requires the following modules to be installed on your raspberry pi:
-    * pigpio
-    * PyQt5
-    * matplotlib
-    * scipy
-    * trimesh
-    * numpy-stl
-    * shapely
-    * pyyaml
-  In order to install the dependencies, you can run the setup.sh files.
+ * pigpio
+ * PyQt5
+ * matplotlib
+ * scipy
+ * trimesh
+ * numpy-stl
+ * shapely
+ * pyyaml
+ In order to install the dependencies, you can run the setup.sh files.
  ## Usage
  ### SVG import
  PiCNiC has a built in SVG module interpreter, which allows SVG files to be parsed in two 2D strategies, namely Contour and Constant Z.
