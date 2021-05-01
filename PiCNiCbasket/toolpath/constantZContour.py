@@ -5,8 +5,8 @@ from shapely.geometry import LineString
 from shapely.geometry import Polygon
 from shapely import affinity
 from shapely.ops import unary_union
-from includes.thirdParty.polyObjects import PolygonPath, PolygonPatch
-import includes.toolpath.svgToContours as svgToContours
+from PiCNiCbasket.thirdParty.polyObjects import PolygonPath, PolygonPatch
+import PiCNiCbasket.toolpath.svgToContours as svgToContours
 
 
 class constantZContour():

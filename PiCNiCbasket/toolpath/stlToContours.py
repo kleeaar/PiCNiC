@@ -10,7 +10,7 @@ from matplotlib.patches import PathPatch
 from matplotlib.path import Path
 from numpy import asarray, concatenate, ones
 
-from includes.thirdParty.polyObjects import PolygonPath, PolygonPatch
+from PiCNiCbasket.thirdParty.polyObjects import PolygonPath, PolygonPatch
 
 class stlToContours():
     def __init__(self, file):

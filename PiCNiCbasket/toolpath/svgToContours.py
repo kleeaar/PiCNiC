@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from shapely.geometry import LineString
 from shapely.geometry import Polygon
-from includes.thirdParty.polyObjects import PolygonPath, PolygonPatch
-import includes.toolpath.constantZContour as constantZContour
+from PiCNiCbasket.thirdParty.polyObjects import PolygonPath, PolygonPatch
+import PiCNiCbasket.toolpath.constantZContour as constantZContour
 
 class svgToContours():
     def __init__(self, file):

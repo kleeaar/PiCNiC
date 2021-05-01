@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from includes.communication.raspberryCommunication import raspberryCommunication
+from PiCNiCbasket.communication.raspberryCommunication import raspberryCommunication
 import numpy as np
 import time
 

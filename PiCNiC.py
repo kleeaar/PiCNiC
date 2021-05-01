@@ -28,17 +28,17 @@ import time
 import sys
 from time import sleep
 
-from includes.misc.ui import Ui_MainWindow
-import includes.misc.utils as util
+from PiCNiCbasket.misc.ui import Ui_MainWindow
+import PiCNiCbasket.misc.utils as util
 
-import includes.toolpath.lineScan as lineScan
-import includes.toolpath.stlToContours as stlToContours
-import includes.toolpath.svgToContours as svgToContours
-from includes.communication.raspberryCommunication import raspberryCommunication
-from includes.communication.threadedTasks import threadedTasks
+import PiCNiCbasket.toolpath.lineScan as lineScan
+import PiCNiCbasket.toolpath.stlToContours as stlToContours
+import PiCNiCbasket.toolpath.svgToContours as svgToContours
+from PiCNiCbasket.communication.raspberryCommunication import raspberryCommunication
+from PiCNiCbasket.communication.threadedTasks import threadedTasks
 
 
-import includes.misc.constants as constants
+import PiCNiCbasket.misc.constants as constants
 #pip install git+https://github.com/pyqtgraph/pyqtgraph required to fix retina display bug
 
 sys.setrecursionlimit(1000000)

@@ -14,8 +14,8 @@ onRpi=hasRPi and hasAdafruit_I2C and hasMCP23017 and hasPIGPIO
 if onRpi:
     import pigpio
     import RPi.GPIO as GPIO
-    from includes.thirdParty.Adafruit_I2C import Adafruit_I2C
-    from includes.thirdParty.MCP23017 import MCP23017
+    from PiCNiCbasket.thirdParty.Adafruit_I2C import Adafruit_I2C
+    from PiCNiCbasket.thirdParty.MCP23017 import MCP23017
 
 
 
