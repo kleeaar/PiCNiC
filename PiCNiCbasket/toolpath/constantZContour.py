@@ -80,8 +80,9 @@ class constantZContour():
             outline=self.getUnion(contourPoly)
             if outline is not None:
                 vertices=PolygonPath(outline).vertices
+                #this method can generate disjunct areas. These must be split in the following in order to have proper toolpaths.
                 out_array = [np.where(np.vstack([np.round(vertices[:,0],8),np.round(vertices[:,1],8)]).T == element)[0].tolist() for element in np.unique(np.vstack([np.round(vertices[:,0],8),np.round(vertices[:,1],8)]).T)]
-                out_array=[elem for elem in out_array if len(elem)==2]
+                out_array=[elem for elem in out_array if len(elem)==2  and elem[1]-elem[0]>1]
                 out_array.sort(key=lambda x: x[1])
 
                 outIndices=[0]
@@ -89,7 +90,7 @@ class constantZContour():
                     if out_array[i][1]!=0 and out_array[i][1]<len(vertices)-1 and np.sqrt((vertices[:,0][out_array[i][1]]-vertices[:,0][out_array[i][1]+1])**2+(vertices[:,1][out_array[i][1]]-vertices[:,1][out_array[i][1]+1])**2)>self.toolDiameter/2.:
                         outputX.append(vertices[:,0][outIndices[-1]:out_array[i][1]])
                         outputY.append(vertices[:,1][outIndices[-1]:out_array[i][1]])
-                        outIndices.append(out_array[i][1])
+                        outIndices.append(out_array[i][1]+1)
                 outputX.append(vertices[:,0][outIndices[-1]:])
                 outputY.append(vertices[:,1][outIndices[-1]:])
                 plt.plot(vertices[:,0][outIndices],vertices[:,1][outIndices], '.r')
