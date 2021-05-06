@@ -44,7 +44,8 @@ Your raspberry pi is not able to directly drive stepper motors, it can only be u
  <img width="600" alt="grafik" src="https://user-images.githubusercontent.com/19652477/115993417-f65df500-a5d2-11eb-871e-8e5a37e02bc1.png">
  
  #### Constant Z
- The Constant Z parsing is still experimental and has some bugs.
+ <img width="600" alt="grafik" src="https://user-images.githubusercontent.com/19652477/117330914-779c6e00-ae96-11eb-80a0-d45b35ea4a84.png">
+
  ### STL import
  PiCNiC has a built in STL interpreter,  which allows STL files to be parsed in both a 2D and a 3D strategy, namely Scan and Contour.
  #### Scan
