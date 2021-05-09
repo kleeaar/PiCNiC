@@ -9,7 +9,7 @@ hasAdafruit_I2C = importlib.util.find_spec("Adafruit_I2C")  is not None
 hasMCP23017 = importlib.util.find_spec("MCP23017")  is not None
 hasPIGPIO= importlib.util.find_spec("pigpio")  is not None
 
-onRpi=hasRPi and hasAdafruit_I2C and hasMCP23017 and hasPIGPIO
+onRpi=hasRPi and hasPIGPIO
 
 if onRpi:
     import pigpio
