@@ -41,7 +41,7 @@ class constantZContour():
             boxOutline=Polygon([((-self.xOffset+self.toolDiameter/2.)/scalingFactor, (-self.yOffset+self.toolDiameter/2.)/scalingFactor), (self.xMax+(self.xOffset-self.toolDiameter/2.)/scalingFactor, (-self.yOffset+self.toolDiameter/2.)/scalingFactor), (self.xMax+(self.xOffset-self.toolDiameter/2.)/scalingFactor, self.yMax+(self.yOffset-self.toolDiameter/2.)/scalingFactor), ((-self.xOffset+self.toolDiameter/2.)/scalingFactor, self.yMax+(self.yOffset-self.toolDiameter/2.)/scalingFactor)])
             stop=False
             while not stop:
-                contour=[line.parallel_offset(offset/scalingFactor, side, join_style=3)]
+                contour=[line.parallel_offset(offset/scalingFactor, side, join_style=1)]
                 for part in contour:#get offset paths
                     subparts=[]
                     if part.type=='MultiLineString':
@@ -74,10 +74,13 @@ class constantZContour():
 
         self.contoursCounter=np.zeros(len(self.contoursX))
 
-        for c, contour in enumerate(self.contoursX[0]):
+        lengths=[]
+        for elem in self.contoursX:
+            lengths.append(len(elem))
+        for c in range(max(lengths)):
             self.exclusions=[]
-            contourPoly=Polygon(tuple(zip(contour, self.contoursY[0][c])))
-            outline=self.getUnion(contourPoly)
+            contourPoly=Polygon(tuple(zip(self.contoursX[0][min(c,len(self.contoursX[0])-1)], self.contoursY[0][min(c,len(self.contoursY[0])-1)])))
+            outline=self.getUnion(contourPoly, max(lengths))
             if outline is not None:
                 vertices=PolygonPath(outline).vertices
                 #this method can generate disjunct areas. These must be split in the following in order to have proper toolpaths.
@@ -86,11 +89,12 @@ class constantZContour():
                 out_array.sort(key=lambda x: x[1])
 
                 outIndices=[0]
-                for i in range(len(out_array)-1):
-                    if out_array[i][1]!=0 and out_array[i][1]<len(vertices)-1 and np.sqrt((vertices[:,0][out_array[i][1]]-vertices[:,0][out_array[i][1]+1])**2+(vertices[:,1][out_array[i][1]]-vertices[:,1][out_array[i][1]+1])**2)>self.toolDiameter/2.:
-                        outputX.append(vertices[:,0][outIndices[-1]:out_array[i][1]])
-                        outputY.append(vertices[:,1][outIndices[-1]:out_array[i][1]])
-                        outIndices.append(out_array[i][1]+1)
+                if False:
+                    for i in range(len(out_array)-1):
+                        if out_array[i][1]!=0 and out_array[i][1]<len(vertices)-1 and np.sqrt((vertices[:,0][out_array[i][1]]-vertices[:,0][out_array[i][1]+1])**2+(vertices[:,1][out_array[i][1]]-vertices[:,1][out_array[i][1]+1])**2)>self.toolDiameter/2.:
+                            outputX.append(vertices[:,0][outIndices[-1]:out_array[i][1]])
+                            outputY.append(vertices[:,1][outIndices[-1]:out_array[i][1]])
+                            outIndices.append(out_array[i][1]+1)
                 outputX.append(vertices[:,0][outIndices[-1]:])
                 outputY.append(vertices[:,1][outIndices[-1]:])
                 plt.plot(vertices[:,0][outIndices],vertices[:,1][outIndices], '.r')
@@ -103,7 +107,7 @@ class constantZContour():
             plt.plot(line.xy[0],line.xy[1])
             stop=False
             while not stop:
-                contour=[line.parallel_offset(offset, 'left', join_style=3)]
+                contour=[line.parallel_offset(offset, 'left', join_style=1)]
                 for part in contour:#get offset paths
                     subparts=[]
                     if part.type=='MultiLineString':
@@ -131,16 +135,17 @@ class constantZContour():
                 toolpath=np.vstack((toolpath,np.array([xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance])))
         return toolpath
 
-    def getUnion(self, shape):
+    def getUnion(self, shape, maxLenth):
         numberOfContours=len(self.contoursX)
         if len(self.exclusions)<numberOfContours-1:
             for j in range(1,numberOfContours):
                 if j not in self.exclusions:
-                    if self.contoursCounter[j]<len(self.contoursX[j]):
-                        contourPolyOfOtherElement=Polygon(tuple(zip(self.contoursX[j][int(self.contoursCounter[j])], self.contoursY[j][int(self.contoursCounter[j])])))
+                    if self.contoursCounter[j]<max(maxLenth,len(self.contoursX[j])):
+                        #print(contoursCounter,j, len(contoursX[j]),len(contoursY[j]))
+                        contourPolyOfOtherElement=Polygon(tuple(zip(self.contoursX[j][min(int(self.contoursCounter[j]),len(self.contoursX[j])-1)], self.contoursY[j][min(int(self.contoursCounter[j]),len(self.contoursY[j])-1)])))
                         if shape.intersects(contourPolyOfOtherElement):
                             contourPoly=unary_union([shape,contourPolyOfOtherElement])
                             self.exclusions.append(j)
                             self.contoursCounter[j]+=1
-                            return self.getUnion(contourPoly)
+                            return self.getUnion(contourPoly, maxLenth)
         return shape

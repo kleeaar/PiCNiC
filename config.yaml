@@ -27,17 +27,17 @@ pinNumbers:
       2: 13
   endswitches: # pins reading the endswitches
     x:
-      front: 9
-      rear: 10
-    y1:
       front: 26
       rear: 19
-    y2:
+    y1:
       front: 13
       rear: 11
+    y2:
+      front: 9
+      rear: 10
     z:
-      front: 22
-      rear: 27
+      front: 27
+      rear: 22
   millingMotorRelay: 7 # pin number controling the milling motor relay
   fan: 12 # pin number controling the fan
 microStepping: # possible vaalue are 1,2,4,8,16,32
