@@ -78,13 +78,19 @@ class svgToContours():
 
     def getContourToolpath(self, depth,scalingFactor=1,offset=0, safetyDistance=5, layers=1):
         self.getPaths(offset/scalingFactor)
+        velocity=np.array([1])
         toolpath=np.array([[0,0,0]])
         for layer in range(1,layers+1):
             layerDepth=-depth*(layer/layers)
             for xpath, ypath in zip(self.offsetX,self.offsetY):
+                velocity=np.append(velocity,1)
                 toolpath=np.vstack((toolpath,np.array([[toolpath[-1][0],toolpath[-1][1],safetyDistance],[xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance]])))#[toolpath[-1][0],toolpath[-1][1],safetyDistance],[xpath[0],ypath[0],safetyDistance]
+                velocity=np.concatenate(velocity,np.zeros(len(xpath)))
                 toolpath=np.vstack((toolpath,np.dstack((np.asarray(xpath)*scalingFactor,np.asarray(ypath)*scalingFactor,np.full(len(xpath),layerDepth)))[0]))
+                velocity=np.append(velocity,0)
                 toolpath=np.vstack((toolpath,np.array([xpath[0]*scalingFactor,ypath[0]*scalingFactor,layerDepth])))
+                velocity=np.append(velocity,0)
                 toolpath=np.vstack((toolpath,np.array([xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance])))
+        velocity=np.concatenate(velocity,np.array([1,0]))
         toolpath=np.vstack((toolpath,np.array([[0,0,safetyDistance],[0,0,0]])))
-        return toolpath
+        return toolpath,velocity
