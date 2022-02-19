@@ -93,4 +93,5 @@ class svgToContours():
                 toolpath=np.vstack((toolpath,np.array([xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance])))
         velocity=np.append(velocity,np.array([1,0]))
         toolpath=np.vstack((toolpath,np.array([[0,0,safetyDistance],[0,0,0]])))
+        print(velocity)
         return toolpath,velocity
