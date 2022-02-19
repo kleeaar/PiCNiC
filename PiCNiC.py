@@ -309,11 +309,13 @@ class stepperControl():
             if self.cncObject.programIsPaused:
                 self.cncObject.stepBeforePause+=self.cncObject.currentProgramStep
                 programCode=np.vstack((np.array([self.cncObject.currentPosition['x']['mm'],self.cncObject.currentPosition['y']['mm'],self.cncObject.currentPosition['z']['mm']]),self.cncObject.toolpath[self.cncObject.stepBeforePause:]))
+                velocity=np.append(np.array([0]),self.cncObject.velocity[self.cncObject.stepBeforePause:])
             else:
                 self.alreadyProcessedSteps=np.empty((0,3))
                 programCode=self.cncObject.toolpath
+                velocity=self.cncObject.velocity
             self.threadedProgram.points=programCode
-            self.threadedProgram.velocity=self.cncObject.velocity
+            self.threadedProgram.velocity=velocity
             self.threadedProgram.done.connect(self.programDone)
             self.threadedProgram.sendDirection.connect(self.changeDirectionPin)
             self.threadedProgram.sendPosition.connect(self.receiveCurrentPositionFromThread)
