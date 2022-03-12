@@ -730,7 +730,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.myCncObject.facets=npzfile['shape']
                 self.make3dPlot(self.canvas2,self.ax2)
             self.myCncObject.toolpath=npzfile['toolpath']
-            self.myCncObject.toolpath=npzfile['velocity']
+            self.myCncObject.velocity=npzfile['velocity']
             self.myCncObject.toolDiameter=npzfile['toolDiameter']
             self.myCncObject.programLength=len(self.myCncObject.toolpath)
             self.plotToolpath(self.canvas2,self.ax2)
