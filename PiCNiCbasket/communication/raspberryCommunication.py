@@ -181,6 +181,8 @@ class raspberryCommunication():
         return True
 
     def runSteps(self,pulseList,deltaX,deltaY,deltaZ,isProgram, controlClass):
+        if not onRpi:
+            return True
         self.controlClass=controlClass
         self.deltaX=deltaX
         self.deltaY=deltaY

@@ -108,7 +108,7 @@ class threadedTasks(QtCore.QObject):
         self.stepsFractionY=self.stepsPerMillimeter['y']*deltaY+self.stepsFractionY-int(self.stepsPerMillimeter['y']*deltaY+self.stepsFractionY)
         self.stepsFractionZ=self.stepsPerMillimeter['z']*deltaZ+self.stepsFractionZ-int(self.stepsPerMillimeter['z']*deltaZ+self.stepsFractionZ)
 
-        velocityMultiplier=1 if velocity==0 else 2
+        velocityMultiplier=1 if velocity==0 else 3
         disableAcceleration=True
         accelerationDuration=1000000.#in us
         duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
