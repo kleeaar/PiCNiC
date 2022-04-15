@@ -130,7 +130,7 @@ class constantZContour():
         for layer in range(1,layers+1):
             layerDepth=-depth*(layer/layers)
             for xpath,ypath in zip(outputX,outputY):
-                velocity=np.append(velocity,np.array([1,0]))
+                velocity=np.append(velocity,np.array([1,1]))
                 toolpath=np.vstack((toolpath,np.array([[toolpath[-1][0],toolpath[-1][1],safetyDistance],[xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance]])))#[toolpath[-1][0],toolpath[-1][1],safetyDistance],[xpath[0],ypath[0],safetyDistance]
                 velocity=np.append(velocity,np.zeros(len(xpath)))
                 toolpath=np.vstack((toolpath,np.dstack((np.asarray(xpath)*scalingFactor,np.asarray(ypath)*scalingFactor,np.full(len(xpath),layerDepth)))[0]))
