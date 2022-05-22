@@ -35,10 +35,13 @@ class svgToContours():
     def getContour(self, poly, side, offset):
         line=LineString(PolygonPath(poly).vertices)
         contour=[line.parallel_offset(offset, side, join_style=2)]
-        for part in contour:#get offset paths
-            x, y = part.xy
-            self.offsetX.append(x)
-            self.offsetY.append(y)
+        try:
+            for part in contour:#get offset paths
+                x, y = part.xy
+                self.offsetX.append(x)
+                self.offsetY.append(y)
+        except Exception as e:
+            print(e)
 
     def getPaths(self, offset):
         sections=[self.mesh]

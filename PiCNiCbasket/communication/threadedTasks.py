@@ -112,6 +112,10 @@ class threadedTasks(QtCore.QObject):
         disableAcceleration=True
         accelerationDuration=1000000.#in us
         duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
+        if np.abs(deltaZ)/duration*1e6>20: # z-axis is limited to 20mm/s
+            duration=np.abs(deltaZ)/20e-6
+        else if max(np.abs([deltaX,deltaY]))/duration*1e6>40: # x/y-axis is limited to 40mm/s
+            duration=np.abs(deltaX)/40e-6s
 
         for i in range(nStepsX):
             if isProgram or disableAcceleration:
