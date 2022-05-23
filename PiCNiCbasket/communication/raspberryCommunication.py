@@ -88,6 +88,7 @@ class raspberryCommunication():
         self.pinNumber=config['pinNumbers']
         self.microStepping=config['microStepping']
         self.axisDirections=config['axisDirections']
+        self.maxVelocity=config['maxVelocity']
 
     def getEndswitchesStates(self):
         if onRpi:

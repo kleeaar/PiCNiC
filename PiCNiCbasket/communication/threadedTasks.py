@@ -112,10 +112,16 @@ class threadedTasks(QtCore.QObject):
         disableAcceleration=True
         accelerationDuration=1000000.#in us
         duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
-        if np.abs(deltaZ)/duration*1e6>20: # z-axis is limited to 20mm/s
-            duration=np.abs(deltaZ)/20e-6
-        elif max(np.abs([deltaX,deltaY]))/duration*1e6>30: # x/y-axis is limited to 30mm/s
-            duration=max(np.abs([deltaX,deltaY]))/30e-6
+
+        if np.abs(deltaZ)/duration*1e6>self.myRaspberryCummunication.maxVelocity['z']: # limit z-axis speed
+            duration=np.abs(deltaZ)/self.myRaspberryCummunication.maxVelocity['z']*1e-6
+        elif np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x'] or np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']: # limit x/y-axis speed
+            if np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']>np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']:
+                if np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x']:
+                    duration=np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']*1e6
+            else:
+                if np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']:
+                    duration=np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']*1e6
 
         for i in range(nStepsX):
             if isProgram or disableAcceleration:

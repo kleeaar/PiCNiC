@@ -49,3 +49,7 @@ axisDirections: # axis directions
   y1: -1
   y2: -1
   z: -1
+maxVelocity: #max velocities in mm/s
+  x: 30
+  y: 30
+  z: 20
