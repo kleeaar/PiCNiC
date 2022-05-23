@@ -114,7 +114,7 @@ class threadedTasks(QtCore.QObject):
         duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
         if np.abs(deltaZ)/duration*1e6>20: # z-axis is limited to 20mm/s
             duration=np.abs(deltaZ)/20e-6
-        else if max(np.abs([deltaX,deltaY]))/duration*1e6>40: # x/y-axis is limited to 40mm/s
+        elif max(np.abs([deltaX,deltaY]))/duration*1e6>30: # x/y-axis is limited to 30mm/s
             duration=max(np.abs([deltaX,deltaY]))/30e-6
 
         for i in range(nStepsX):
