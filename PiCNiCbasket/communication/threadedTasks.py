@@ -114,9 +114,9 @@ class threadedTasks(QtCore.QObject):
         duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
 
         if np.abs(deltaZ)/duration*1e6>self.myRaspberryCummunication.maxVelocity['z']: # limit z-axis speed
-            duration=np.abs(deltaZ)/self.myRaspberryCummunication.maxVelocity['z']*1e-6
+            duration=np.abs(deltaZ)/self.myRaspberryCummunication.maxVelocity['z']*1e6
         elif np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x'] or np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']: # limit x/y-axis speed
-            if np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']>np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']:
+            if np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']>np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']:#x-axis defines the duration of the motion -> y-axis is slower
                 if np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x']:
                     duration=np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']*1e6
             else:
