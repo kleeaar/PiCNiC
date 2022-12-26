@@ -20,6 +20,7 @@ class threadedTasks(QtCore.QObject):
         self.pauseSignal=False
         self.speed=0
         self.points=[]
+        self.velocity=[]
         self.endswitchesStates=self.myRaspberryCummunication.getEndswitchesStates()
         self.stepsFractionX=0
         self.stepsFractionY=0
@@ -34,7 +35,7 @@ class threadedTasks(QtCore.QObject):
             self.targetPosition['x']=point[0]
             self.targetPosition['y']=point[1]
             self.targetPosition['z']=point[2]
-            if not self.goToPosition(isProgram=True):
+            if not self.goToPosition(velocity=self.velocity[programStep],isProgram=True):
                 break #endswitch triggered => abort program
             self.sendCurrentProgramStep.emit(programStep)
         if not self.mainStopSignal:
@@ -87,7 +88,7 @@ class threadedTasks(QtCore.QObject):
         self.myRaspberryCummunication.pi.stop()
         self.done.emit()
 
-    def goToPosition(self, isProgram=False, isReferenceScan=False):
+    def goToPosition(self, velocity=0, isProgram=False, isReferenceScan=False):
         deltaX=self.targetPosition['x']-self.currentPosition['x']['mm']
         deltaY=self.targetPosition['y']-self.currentPosition['y']['mm']
         deltaZ=self.targetPosition['z']-self.currentPosition['z']['mm']
@@ -107,10 +108,20 @@ class threadedTasks(QtCore.QObject):
         self.stepsFractionY=self.stepsPerMillimeter['y']*deltaY+self.stepsFractionY-int(self.stepsPerMillimeter['y']*deltaY+self.stepsFractionY)
         self.stepsFractionZ=self.stepsPerMillimeter['z']*deltaZ+self.stepsFractionZ-int(self.stepsPerMillimeter['z']*deltaZ+self.stepsFractionZ)
 
-
+        velocityMultiplier=1 if velocity==0 else 3
         disableAcceleration=True
         accelerationDuration=1000000.#in us
-        duration=max(np.abs([deltaX,deltaY,deltaZ]))/self.speed*1e6 #in us
+        duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
+
+        if np.abs(deltaZ)/duration*1e6>self.myRaspberryCummunication.maxVelocity['z']: # limit z-axis speed
+            duration=np.abs(deltaZ)/self.myRaspberryCummunication.maxVelocity['z']*1e6
+        elif np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x'] or np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']: # limit x/y-axis speed
+            if np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']>np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']:#x-axis defines the duration of the motion -> y-axis is slower
+                if np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x']:
+                    duration=np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']*1e6
+            else:
+                if np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']:
+                    duration=np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']*1e6
 
         for i in range(nStepsX):
             if isProgram or disableAcceleration:

@@ -60,6 +60,8 @@ class myCNC():
         self.stlScaling=1
         self.svgScaling=1
         self.stlFileName=None
+        self.facets=[]
+        self.importedContourForPlotting=[]
 
     def setZero(self):
         self.currentPosition={'x':{'mm':0,'steps':0},'y':{'mm':0,'steps':0},'z':{'mm':0,'steps':0}}
@@ -75,18 +77,31 @@ class myCNC():
         self.homePosition['y']=self.currentPosition['y']['mm']
         self.homePosition['z']=self.currentPosition['z']['mm']
 
-    def translateToOrigin(self,meshItem=None):
+    def translateToOrigin(self,meshItem=None, ):
         self.partMinZ=min(self.facets[...,2][...,2])
         self.partMaxZ=max(self.facets[...,2][...,2])#-self.partMinZ
         self.partMaxHeight=self.partMaxZ-self.partMinZ
         self.partMinX=min(self.facets[...,0][...,0])
         self.partMinY=min(self.facets[...,1][...,1])
-        self.facets[...][...,0]-=self.partMinX
-        self.facets[...][...,1]-=self.partMinY
-        self.facets[...][...,2]-=self.partMaxZ
+        self.partMaxX=max(self.facets[...,0][...,0])
+        self.partMaxY=max(self.facets[...,1][...,1])
+        if win.nullpunktPosition_STL.currentText()=='Unten Links':
+            self.facets[...][...,0]-=self.partMinX
+            self.facets[...][...,1]-=self.partMinY
+            self.facets[...][...,2]-=self.partMaxZ
 
-        if meshItem!=None:
-            meshItem.translate(-self.partMinX,-self.partMinY,-self.partMaxZ)
+            if meshItem!=None:
+                meshItem.translate(-self.partMinX,-self.partMinY,-self.partMaxZ)
+        elif win.nullpunktPosition_STL.currentText()=='Mittig':
+            self.facets[...][...,0]-=(self.partMaxX+self.partMinX)/2.
+            self.facets[...][...,1]-=(self.partMaxY+self.partMinY)/2.
+            self.facets[...][...,2]-=self.partMaxZ
+
+            if meshItem!=None:
+                meshItem.translate(-(self.partMaxX+self.partMinX)/2.,-(self.partMaxY+self.partMinY)/2.,-self.partMaxZ)
+        elif win.nullpunktPosition_STL.currentText()=='Original':
+            #reload Geometry
+            self.stlImport(win.fileName, doNotPlot=True)
 
     def generateStlToolpath(self):
         if win.processingStrategy.currentText()=='line':
@@ -104,6 +119,7 @@ class myCNC():
             win.generateProgressStl.setText("Step 4 of 4: Simplifying path")
             win.generateProgressStl.repaint()
             self.toolpath=util.removeSameDirectionSteps(self.toolpath)
+            self.velocity=np.zeros(len(self.toolpath))
             #self.toolpath=util.shiftToolpath(self.toolpath,[-self.partMinX,-self.partMinY,-self.partMaxZ])
             win.generateProgressStl.setText("Done")
             win.generateProgressStl.repaint()
@@ -113,37 +129,38 @@ class myCNC():
                 inv=-1
             if self.stlFileName is not None:
                 contour=stlToContours.stlToContours(self.stlFileName)
-                self.toolpath=contour.getContourToolpath(win.sliceDistance.value(),scalingFactor=self.stlScaling,offset=inv*win.toolDiameterStl.value()/2.,safetyDistance=win.safetyDistanceStl.value(), layers=int(win.numberOfLayersStl.value()))
+                self.toolpath,self.velocity=contour.getContourToolpath(win.sliceDistance.value(),scalingFactor=self.stlScaling,offset=inv*win.toolDiameterStl.value()/2.,safetyDistance=win.safetyDistanceStl.value(), layers=int(win.numberOfLayersStl.value()))
             else:
                 return
         elif win.processingStrategy.currentText()=='constant z':
             print(win.processingStrategy.currentText())
         win.plotToolpath(win.canvas,win.ax)
 
-    def stlImport(self,fileName):
+    def stlImport(self,fileName,doNotPlot=False):
         self.stlFileName=fileName
         self.importedMesh = mesh.Mesh.from_file(fileName)
         self.facets=self.importedMesh.vectors
         #win.clearCanvasElements(win.plot3d)
-        win.make3dPlot(win.canvas,win.ax)
+        if not doNotPlot:
+            win.make3dPlot(win.canvas,win.ax)
 
     def generateSvgToolpath(self):
         if win.svgProcessingStrategy.currentText()=='contour':
             win.generateProgressSvg.setText('Analyzing contours')
             win.generateProgressSvg.repaint()
             QtWidgets.QApplication.processEvents()
-            self.toolpath=self.contourClass.getContourToolpath(win.depth.value(),scalingFactor=self.svgScaling/constants.conversionFactorPPItoMM,offset=win.toolDiameter.value()/2.,safetyDistance=win.safetyDistance.value(), layers=int(win.numberOfLayers.value()))
+            self.toolpath,self.velocity=self.contourClass.getContourToolpath(win.depth.value(),scalingFactor=self.svgScaling/constants.conversionFactorPPItoMM,offset=win.toolDiameter.value()/2.,safetyDistance=win.safetyDistance.value(), layers=int(win.numberOfLayers.value()))
         elif win.svgProcessingStrategy.currentText()=='constant z':
             win.generateProgressSvg.setText('Analyzing contours')
             win.generateProgressSvg.repaint()
             QtWidgets.QApplication.processEvents()
-            self.toolpath=self.contourClass.makeOuterOffsets(win.depth.value(),win.offsetX.value(),win.offsetY.value(),scalingFactor=self.svgScaling/constants.conversionFactorPPItoMM,toolDimater=win.toolDiameter.value(),safetyDistance=win.safetyDistance.value(), layers=int(win.numberOfLayers.value()))
+            self.toolpath,self.velocity=self.contourClass.makeOuterOffsets(win.depth.value(),win.offsetX.value(),win.offsetY.value(),scalingFactor=self.svgScaling/constants.conversionFactorPPItoMM,toolDimater=win.toolDiameter.value(),safetyDistance=win.safetyDistance.value(), layers=int(win.numberOfLayers.value()))
 
         win.generateProgressSvg.setText("Done")
         win.plotToolpath(win.canvas,win.ax)
 
     def svgImport(self,fileName):
-        self.contourClass=svgToContours.svgToContours(fileName)
+        self.contourClass=svgToContours.svgToContours(fileName, origin=win.nullpunktPosition_SVG.currentText())
         self.importedContourForPlotting=np.asarray(self.contourClass.getContours())
         win.make2dPlot(win.canvas,win.ax,scaling=self.svgScaling/constants.conversionFactorPPItoMM)
 
@@ -308,10 +325,13 @@ class stepperControl():
             if self.cncObject.programIsPaused:
                 self.cncObject.stepBeforePause+=self.cncObject.currentProgramStep
                 programCode=np.vstack((np.array([self.cncObject.currentPosition['x']['mm'],self.cncObject.currentPosition['y']['mm'],self.cncObject.currentPosition['z']['mm']]),self.cncObject.toolpath[self.cncObject.stepBeforePause:]))
+                velocity=np.append(np.array([0]),self.cncObject.velocity[self.cncObject.stepBeforePause:])
             else:
                 self.alreadyProcessedSteps=np.empty((0,3))
                 programCode=self.cncObject.toolpath
+                velocity=self.cncObject.velocity
             self.threadedProgram.points=programCode
+            self.threadedProgram.velocity=velocity
             self.threadedProgram.done.connect(self.programDone)
             self.threadedProgram.sendDirection.connect(self.changeDirectionPin)
             self.threadedProgram.sendPosition.connect(self.receiveCurrentPositionFromThread)
@@ -485,7 +505,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.svgImportButton.clicked[bool].connect(self.openSvgFile)
         self.scaleSvg.valueChanged.connect(self.setSvgScaling)
         self.scaleStl.valueChanged.connect(self.setStlScaling)
-
+        self.nullpunktPosition_STL.currentTextChanged.connect(self.setStlOrigin)
+        self.nullpunktPosition_SVG.currentTextChanged.connect(self.setSvgOrigin)
         self.invertContour.setHidden(True)
         self.processingStrategy.currentIndexChanged.connect(self.setLabels)
 
@@ -568,26 +589,35 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         source = self.sender()
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","STL files (*.stl)", options=options)
-        if fileName:
-            self.stlFilePathLabel.setText(fileName)
+        self.fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","STL files (*.stl)", options=options)
+        if self.fileName:
+            self.stlFilePathLabel.setText(self.fileName)
             source.setChecked(False)
-            self.myCncObject.stlImport(fileName)
+            self.myCncObject.stlImport(self.fileName)
 
     def setStlScaling(self):
         source = self.sender()
         self.myCncObject.stlScaling=source.value()
         self.make3dPlot(self.canvas,self.ax)
 
+    def setStlOrigin(self):
+        if len(self.myCncObject.facets)!=0:
+            self.make3dPlot(self.canvas,self.ax)
+
+    def setSvgOrigin(self):
+        if len(self.myCncObject.importedContourForPlotting)!=0:
+            self.myCncObject.svgImport(self.fileName)
+
+
     def openSvgFile(self):
         source = self.sender()
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","SVG files (*.svg)", options=options)
-        if fileName:
-            self.svgFilePathLabel.setText(fileName)
+        self.fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","SVG files (*.svg)", options=options)
+        if self.fileName:
+            self.svgFilePathLabel.setText(self.fileName)
             source.setChecked(False)
-            self.myCncObject.svgImport(fileName)
+            self.myCncObject.svgImport(self.fileName)
 
     def setSvgScaling(self):
         source = self.sender()
@@ -601,7 +631,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         fileName, _ = QtWidgets.QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","*.npz files (*.npz)", options=options)
         if fileName:
             source.setChecked(False)
-            np.savez(fileName, type="2d",shape=self.rescaledContour,toolpath=self.myCncObject.toolpath, toolDiameter=self.toolDiameter.value())
+            np.savez(fileName, type="2d",shape=self.rescaledContour,toolpath=self.myCncObject.toolpath, velocity=self.myCncObject.velocity, toolDiameter=self.toolDiameter.value())
 
     def saveStlToNpzFile(self):
         source = self.sender()
@@ -610,7 +640,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         fileName, _ = QtWidgets.QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","*.npz files (*.npz)", options=options)
         if fileName:
             source.setChecked(False)
-            np.savez(fileName, type="3d",shape=self.myCncObject.stlScaling*self.myCncObject.facets,toolpath=self.myCncObject.toolpath,toolDiameter=self.toolDiameterStl.value())
+            np.savez(fileName, type="3d",shape=self.myCncObject.stlScaling*self.myCncObject.facets,toolpath=self.myCncObject.toolpath,velocity=self.myCncObject.velocity, toolDiameter=self.toolDiameterStl.value())
 
     def make3dPlot(self,canvas, graph):
         graph.clear()
@@ -726,6 +756,7 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.myCncObject.facets=npzfile['shape']
                 self.make3dPlot(self.canvas2,self.ax2)
             self.myCncObject.toolpath=npzfile['toolpath']
+            self.myCncObject.velocity=npzfile['velocity']
             self.myCncObject.toolDiameter=npzfile['toolDiameter']
             self.myCncObject.programLength=len(self.myCncObject.toolpath)
             self.plotToolpath(self.canvas2,self.ax2)

@@ -112,18 +112,24 @@ class stlToContours():
         else:
             outputX.append(vertices[:,0])
             outputY.append(vertices[:,1])
+        velocity=np.array([1])
         toolpath=np.array([[0,0,0]])
         for layer in range(1,layers+1):
             layerDepth=-depth*(layer/layers)
             for xpath, ypath in zip(outputX,outputY):
                 if len(xpath)==0:
                     continue
+                velocity=np.append(velocity,np.array([1,1]))
                 toolpath=np.vstack((toolpath,np.array([[toolpath[-1][0],toolpath[-1][1],safetyDistance],[xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance]])))#[toolpath[-1][0],toolpath[-1][1],safetyDistance],[xpath[0],ypath[0],safetyDistance]
+                velocity=np.append(velocity,np.zeros(len(xpath)))
                 toolpath=np.vstack((toolpath,np.dstack((np.asarray(xpath)*scalingFactor,np.asarray(ypath)*scalingFactor,np.full(len(xpath),layerDepth)))[0]))
-                toolpath=np.vstack((toolpath,np.array([xpath[0]*scalingFactor,ypath[0]*scalingFactor,layerDepth])))
+                velocity=np.append(velocity,0)
+                toolpath=np.vstack((toolpath,np.arrsay([xpath[0]*scalingFactor,ypath[0]*scalingFactor,layerDepth])))
+                velocity=np.append(velocity,0)
                 toolpath=np.vstack((toolpath,np.array([xpath[0]*scalingFactor,ypath[0]*scalingFactor,safetyDistance])))
+        velocity=np.append(velocity,np.array([1,0]))
         toolpath=np.vstack((toolpath,np.array([[0,0,safetyDistance],[0,0,0]])))
-        return toolpath
+        return toolpath,velocity
 
     def getContour(self, poly, side, offset):
         list=[[],[]]
