@@ -85,14 +85,14 @@ class myCNC():
         self.partMinY=min(self.facets[...,1][...,1])
         self.partMaxX=max(self.facets[...,0][...,0])
         self.partMaxY=max(self.facets[...,1][...,1])
-        if win.nullpunktPosition_STL.currentText()=='Unten Links':
+        if win.nullpunktPosition_STL.currentText()=='Bottom Left':
             self.facets[...][...,0]-=self.partMinX
             self.facets[...][...,1]-=self.partMinY
             self.facets[...][...,2]-=self.partMaxZ
 
             if meshItem!=None:
                 meshItem.translate(-self.partMinX,-self.partMinY,-self.partMaxZ)
-        elif win.nullpunktPosition_STL.currentText()=='Mittig':
+        elif win.nullpunktPosition_STL.currentText()=='Centered':
             self.facets[...][...,0]-=(self.partMaxX+self.partMinX)/2.
             self.facets[...][...,1]-=(self.partMaxY+self.partMinY)/2.
             self.facets[...][...,2]-=self.partMaxZ
