@@ -14,9 +14,9 @@ class svgToContours():
             theta=np.pi/2.
             rotZ=[[1,0,0],[0,-1,0],[0,0,0]]
             self.mesh.apply_transform(rotZ)
-            if origin=='Mittig':
+            if origin=='Centered':
                 self.mesh.apply_obb()
-            elif origin=='Unten Links':
+            elif origin=='Bottom Left':
                 self.mesh.rezero()
         self.outlinesList=[]
         self.holesList=[]

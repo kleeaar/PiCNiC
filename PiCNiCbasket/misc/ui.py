@@ -1010,7 +1010,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.tabWidget_2.setCurrentIndex(1)
+        self.tabWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1031,8 +1031,8 @@ class Ui_MainWindow(object):
         self.xPosLabel_15.setText(_translate("MainWindow", "Strategy"))
         self.xOffsetLabel.setText(_translate("MainWindow", "Offset X"))
         self.yOffsetLabel.setText(_translate("MainWindow", "Offset Y"))
-        self.nullpunktPosition_SVG.setItemText(0, _translate("MainWindow", "Mittig"))
-        self.nullpunktPosition_SVG.setItemText(1, _translate("MainWindow", "Unten Links"))
+        self.nullpunktPosition_SVG.setItemText(0, _translate("MainWindow", "Centered"))
+        self.nullpunktPosition_SVG.setItemText(1, _translate("MainWindow", "Bottom Left"))
         self.nullpunktPosition_SVG.setItemText(2, _translate("MainWindow", "Original"))
         self.xPosLabel_17.setText(_translate("MainWindow", "Nullpunkt"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab), _translate("MainWindow", "svg"))
@@ -1052,8 +1052,8 @@ class Ui_MainWindow(object):
         self.generateProgressStl.setText(_translate("MainWindow", "..."))
         self.invertContour.setText(_translate("MainWindow", "Invert\n"
 "contour"))
-        self.nullpunktPosition_STL.setItemText(0, _translate("MainWindow", "Mittig"))
-        self.nullpunktPosition_STL.setItemText(1, _translate("MainWindow", "Unten Links"))
+        self.nullpunktPosition_STL.setItemText(0, _translate("MainWindow", "Centered"))
+        self.nullpunktPosition_STL.setItemText(1, _translate("MainWindow", "Bottom Left"))
         self.nullpunktPosition_STL.setItemText(2, _translate("MainWindow", "Original"))
         self.xPosLabel_16.setText(_translate("MainWindow", "Nullpunkt"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_4), _translate("MainWindow", "stl"))
