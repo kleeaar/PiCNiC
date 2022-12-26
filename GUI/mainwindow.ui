@@ -29,7 +29,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -111,7 +111,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>500</y>
+          <y>530</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -128,7 +128,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>420</y>
+          <y>460</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -422,7 +422,7 @@
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>460</y>
+          <y>500</y>
           <width>171</width>
           <height>16</height>
          </rect>
@@ -587,6 +587,57 @@
          <string>Offset Y</string>
         </property>
        </widget>
+       <widget class="QComboBox" name="nullpunktPosition_SVG">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>91</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Mittig</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Unten Links</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Original</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="xPosLabel_17">
+        <property name="geometry">
+         <rect>
+          <x>132</x>
+          <y>69</y>
+          <width>141</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Nullpunkt</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
@@ -617,7 +668,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>500</y>
+          <y>530</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -815,7 +866,7 @@
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>420</y>
+          <y>460</y>
           <width>191</width>
           <height>41</height>
          </rect>
@@ -1004,7 +1055,7 @@
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>460</y>
+          <y>500</y>
           <width>171</width>
           <height>16</height>
          </rect>
@@ -1035,6 +1086,57 @@
         <property name="text">
          <string>Invert
 contour</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="nullpunktPosition_STL">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>91</y>
+          <width>111</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>Mittig</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Unten Links</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Original</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="xPosLabel_16">
+        <property name="geometry">
+         <rect>
+          <x>132</x>
+          <y>69</y>
+          <width>141</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Nullpunkt</string>
         </property>
        </widget>
       </widget>

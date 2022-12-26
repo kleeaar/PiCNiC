@@ -7,14 +7,17 @@ from PiCNiCbasket.thirdParty.polyObjects import PolygonPath, PolygonPatch
 import PiCNiCbasket.toolpath.constantZContour as constantZContour
 
 class svgToContours():
-    def __init__(self, file):
+    def __init__(self, file, origin=None):
         self.mesh = trimesh.load(file)
         invertY=True
         if invertY:
             theta=np.pi/2.
             rotZ=[[1,0,0],[0,-1,0],[0,0,0]]
             self.mesh.apply_transform(rotZ)
-            self.mesh.rezero()
+            if origin=='Mittig':
+                self.mesh.apply_obb()
+            elif origin=='Unten Links':
+                self.mesh.rezero()
         self.outlinesList=[]
         self.holesList=[]
         self.offsetX=[]
