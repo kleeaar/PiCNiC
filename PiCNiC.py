@@ -170,6 +170,13 @@ class stepperControl():
         self.cncObject=cncObject
         self.axisDirectionPin={'x':1, 'y':1, 'z':1}
         self.myRaspberryCommunication=raspberryCommunication()
+        if not self.myRaspberryCommunication.MCPisConnected and self.myRaspberryCommunication.onRpi:
+            msg = QtWidgets.QMessageBox(win)
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText("MCP (port expander) not connected.\r\nProgram will be shut down!")
+            msg.setWindowTitle("ERROR")
+            retval = msg.exec_()
+            exit()
         self.myRaspberryCommunication.changeMillingMotorStatus(0)
 
         self.cncObject.stepsPerMillimeter={'x':20*self.myRaspberryCommunication.microStepping['x'],'y':20*self.myRaspberryCommunication.microStepping['y'],'z':50*self.myRaspberryCommunication.microStepping['z']}

@@ -12,7 +12,7 @@ class threadedTasks(QtCore.QObject):
 
     def __init__(self,stepsPerMillimeter):
         super().__init__()
-        self.myRaspberryCummunication=raspberryCommunication()
+        self.myRaspberryCommunication=raspberryCommunication()
         self.stepsPerMillimeter=stepsPerMillimeter
         self.currentPosition={}
         self.targetPosition={}
@@ -21,7 +21,7 @@ class threadedTasks(QtCore.QObject):
         self.speed=0
         self.points=[]
         self.velocity=[]
-        self.endswitchesStates=self.myRaspberryCummunication.getEndswitchesStates()
+        self.endswitchesStates=self.myRaspberryCommunication.getEndswitchesStates()
         self.stepsFractionX=0
         self.stepsFractionY=0
         self.stepsFractionZ=0
@@ -39,7 +39,7 @@ class threadedTasks(QtCore.QObject):
                 break #endswitch triggered => abort program
             self.sendCurrentProgramStep.emit(programStep)
         if not self.mainStopSignal:
-            self.myRaspberryCummunication.pi.stop()
+            self.myRaspberryCommunication.pi.stop()
             self.done.emit()
 
     def performReferenceScan(self):
@@ -85,7 +85,7 @@ class threadedTasks(QtCore.QObject):
             if not self.mainStopSignal:
                 self.goToPosition(isReferenceScan=True)
             self.speed*=10.
-        self.myRaspberryCummunication.pi.stop()
+        self.myRaspberryCommunication.pi.stop()
         self.done.emit()
 
     def goToPosition(self, velocity=0, isProgram=False, isReferenceScan=False):
@@ -112,16 +112,16 @@ class threadedTasks(QtCore.QObject):
         disableAcceleration=True
         accelerationDuration=1000000.#in us
         duration=max(np.abs([deltaX,deltaY,deltaZ]))/(self.speed*velocityMultiplier)*1e6 #in us
-
-        if np.abs(deltaZ)/duration*1e6>self.myRaspberryCummunication.maxVelocity['z']: # limit z-axis speed
-            duration=np.abs(deltaZ)/self.myRaspberryCummunication.maxVelocity['z']*1e6
-        elif np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x'] or np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']: # limit x/y-axis speed
-            if np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']>np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']:#x-axis defines the duration of the motion -> y-axis is slower
-                if np.abs(deltaX)/duration*1e6>self.myRaspberryCummunication.maxVelocity['x']:
-                    duration=np.abs(deltaX)/self.myRaspberryCummunication.maxVelocity['x']*1e6
-            else:
-                if np.abs(deltaY)/duration*1e6>self.myRaspberryCummunication.maxVelocity['y']:
-                    duration=np.abs(deltaY)/self.myRaspberryCummunication.maxVelocity['y']*1e6
+        if duration!=0:
+            if np.abs(deltaZ)/duration*1e6>self.myRaspberryCommunication.maxVelocity['z']: # limit z-axis speed
+                duration=np.abs(deltaZ)/self.myRaspberryCommunication.maxVelocity['z']*1e6
+            elif np.abs(deltaX)/duration*1e6>self.myRaspberryCommunication.maxVelocity['x'] or np.abs(deltaY)/duration*1e6>self.myRaspberryCommunication.maxVelocity['y']: # limit x/y-axis speed
+                if np.abs(deltaX)/self.myRaspberryCommunication.maxVelocity['x']>np.abs(deltaY)/self.myRaspberryCommunication.maxVelocity['y']:#x-axis defines the duration of the motion -> y-axis is slower
+                    if np.abs(deltaX)/duration*1e6>self.myRaspberryCommunication.maxVelocity['x']:
+                        duration=np.abs(deltaX)/self.myRaspberryCommunication.maxVelocity['x']*1e6
+                else:
+                    if np.abs(deltaY)/duration*1e6>self.myRaspberryCommunication.maxVelocity['y']:
+                        duration=np.abs(deltaY)/self.myRaspberryCommunication.maxVelocity['y']*1e6
 
         for i in range(nStepsX):
             if isProgram or disableAcceleration:
@@ -130,8 +130,8 @@ class threadedTasks(QtCore.QObject):
                 x=(i*duration/float(nStepsX)/accelerationDuration)
                 accelTime=np.log(x/0.1+1)+x
                 startTime=accelTime*accelerationDuration+10#delay by 10us to direction pin
-            tx.append([startTime,self.myRaspberryCummunication.pinNumber['step']['x'],1])
-            tx.append([startTime+pulseLength,self.myRaspberryCummunication.pinNumber['step']['x'],0])
+            tx.append([startTime,self.myRaspberryCommunication.pinNumber['step']['x'],1])
+            tx.append([startTime+pulseLength,self.myRaspberryCommunication.pinNumber['step']['x'],0])
         for i in range(nStepsY):
             if isProgram or disableAcceleration:
                 startTime=i*duration/float(nStepsY)+10
@@ -140,10 +140,10 @@ class threadedTasks(QtCore.QObject):
                 accelTime=np.log(x/0.1+1)+x
                 startTime=accelTime*accelerationDuration+10#delay by 10us to direction pin
 
-            ty.append([startTime,self.myRaspberryCummunication.pinNumber['step']['y1'],1])
-            ty.append([startTime,self.myRaspberryCummunication.pinNumber['step']['y2'],1])
-            ty.append([startTime+pulseLength,self.myRaspberryCummunication.pinNumber['step']['y1'],0])
-            ty.append([startTime+pulseLength,self.myRaspberryCummunication.pinNumber['step']['y2'],0])
+            ty.append([startTime,self.myRaspberryCommunication.pinNumber['step']['y1'],1])
+            ty.append([startTime,self.myRaspberryCommunication.pinNumber['step']['y2'],1])
+            ty.append([startTime+pulseLength,self.myRaspberryCommunication.pinNumber['step']['y1'],0])
+            ty.append([startTime+pulseLength,self.myRaspberryCommunication.pinNumber['step']['y2'],0])
         for i in range(nStepsZ):
             if isProgram or disableAcceleration:
                 startTime=i*duration/float(nStepsZ)+10
@@ -151,24 +151,24 @@ class threadedTasks(QtCore.QObject):
                 x=(i*duration/float(nStepsZ)/accelerationDuration)
                 accelTime=np.log(x/0.1+1)+x
                 startTime=accelTime*accelerationDuration+10#delay by 10us to direction pin
-            tz.append([startTime,self.myRaspberryCummunication.pinNumber['step']['z'],1])
-            tz.append([startTime+pulseLength,self.myRaspberryCummunication.pinNumber['step']['z'],0])
+            tz.append([startTime,self.myRaspberryCommunication.pinNumber['step']['z'],1])
+            tz.append([startTime+pulseLength,self.myRaspberryCommunication.pinNumber['step']['z'],0])
 
         #add last another step at zero, so last step is not too short
         #only correct for non acceleration case
         if nStepsX>0:
-            tx.append([(float(nStepsX)+1)*duration/float(nStepsX)+10,self.myRaspberryCummunication.pinNumber['step']['x'],0])
+            tx.append([(float(nStepsX)+1)*duration/float(nStepsX)+10,self.myRaspberryCommunication.pinNumber['step']['x'],0])
         if nStepsY>0:
-            ty.append([(float(nStepsY)+1)*duration/float(nStepsY)+10,self.myRaspberryCummunication.pinNumber['step']['y1'],0])
-            ty.append([(float(nStepsY)+1)*duration/float(nStepsY)+10,self.myRaspberryCummunication.pinNumber['step']['y2'],0])
+            ty.append([(float(nStepsY)+1)*duration/float(nStepsY)+10,self.myRaspberryCommunication.pinNumber['step']['y1'],0])
+            ty.append([(float(nStepsY)+1)*duration/float(nStepsY)+10,self.myRaspberryCommunication.pinNumber['step']['y2'],0])
 
         if nStepsZ>0:
-            tz.append([(float(nStepsZ)+1)*duration/float(nStepsZ)+10,self.myRaspberryCummunication.pinNumber['step']['z'],0])
+            tz.append([(float(nStepsZ)+1)*duration/float(nStepsZ)+10,self.myRaspberryCommunication.pinNumber['step']['z'],0])
 
-        mergedSteps=[[0,self.myRaspberryCummunication.pinNumber['direction']['x'],1 if dirX==-1*self.myRaspberryCummunication.axisDirections['x'] else 0],
-                    [0,self.myRaspberryCummunication.pinNumber['direction']['y1'],1 if dirY==-1*self.myRaspberryCummunication.axisDirections['y1'] else 0],
-                    [0,self.myRaspberryCummunication.pinNumber['direction']['y2'],1 if dirY==-1*self.myRaspberryCummunication.axisDirections['y2'] else 0],
-                    [0,self.myRaspberryCummunication.pinNumber['direction']['z'],1 if dirZ==-1*self.myRaspberryCummunication.axisDirections['z'] else 0]] #direction values
+        mergedSteps=[[0,self.myRaspberryCommunication.pinNumber['direction']['x'],1 if dirX==-1*self.myRaspberryCommunication.axisDirections['x'] else 0],
+                    [0,self.myRaspberryCommunication.pinNumber['direction']['y1'],1 if dirY==-1*self.myRaspberryCommunication.axisDirections['y1'] else 0],
+                    [0,self.myRaspberryCommunication.pinNumber['direction']['y2'],1 if dirY==-1*self.myRaspberryCommunication.axisDirections['y2'] else 0],
+                    [0,self.myRaspberryCommunication.pinNumber['direction']['z'],1 if dirZ==-1*self.myRaspberryCommunication.axisDirections['z'] else 0]] #direction values
 
         mergedSteps.extend(tx)
         mergedSteps.extend(ty)
@@ -176,7 +176,7 @@ class threadedTasks(QtCore.QObject):
 
         mergedSteps.sort(key=lambda x: x[0])
 
-        if not self.myRaspberryCummunication.runSteps(mergedSteps,deltaX,deltaY,deltaZ,isProgram,self):
+        if not self.myRaspberryCommunication.runSteps(mergedSteps,deltaX,deltaY,deltaZ,isProgram,self):
             self.sendPosition.emit(self.currentPosition['x']['mm'],self.currentPosition['y']['mm'],self.currentPosition['z']['mm'],isProgram)
             return False #endswitches triggered => abort program
 
@@ -186,7 +186,7 @@ class threadedTasks(QtCore.QObject):
 
         self.sendPosition.emit(self.targetPosition['x'],self.targetPosition['y'],self.targetPosition['z'],isProgram)
         if not isProgram and not isReferenceScan:
-            self.myRaspberryCummunication.pi.stop()
+            self.myRaspberryCommunication.pi.stop()
             self.done.emit()
         return True
 

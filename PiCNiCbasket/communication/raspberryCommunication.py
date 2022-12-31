@@ -22,6 +22,8 @@ if onRpi:
 class raspberryCommunication():
     def __init__(self):
         # Connect to gpiodd daemon
+        self.MCPisConnected=None
+        self.onRpi=onRpi
         if onRpi:
             GPIO.setwarnings(False)
             GPIO.setmode(GPIO.BCM)
@@ -96,7 +98,15 @@ class raspberryCommunication():
                 if axis != 'allAxes':
                     self.endswitchesStates[axis]['front']=not GPIO.input(self.pinNumber['endswitches'][axis]['front'])
                     self.endswitchesStates[axis]['rear']=not GPIO.input(self.pinNumber['endswitches'][axis]['rear'])
-
+                    if self.endswitchesStates[axis]['front'] or self.endswitchesStates[axis]['rear']: # this is to make sure if it is not just a noise, that triggers the endswitch
+                        front=0
+                        rear=0
+                        for i in range(10):#8 of 10 following signals need to be true
+                            front+=int(not GPIO.input(self.pinNumber['endswitches'][axis]['front']))
+                            rear+=int(not GPIO.input(self.pinNumber['endswitches'][axis]['rear']))
+                            self.endswitchesStates[axis]['front']
+                        self.endswitchesStates[axis]['front']=False if front<8 else True
+                        self.endswitchesStates[axis]['rear']=False if rear<8 else True
             self.endswitchesStates['allAxes']=self.endswitchesStates['x']['front'] or self.endswitchesStates['x']['rear'] or self.endswitchesStates['y1']['front'] or self.endswitchesStates['y1']['rear'] or self.endswitchesStates['y2']['front'] or self.endswitchesStates['y2']['rear'] or  self.endswitchesStates['z']['front'] or self.endswitchesStates['z']['rear']
 
         return self.endswitchesStates
