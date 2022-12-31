@@ -22,6 +22,8 @@ if onRpi:
 class raspberryCommunication():
     def __init__(self):
         # Connect to gpiodd daemon
+        self.MCPisConnected=None
+        self.onRpi=onRpi
         if onRpi:
             GPIO.setwarnings(False)
             GPIO.setmode(GPIO.BCM)
